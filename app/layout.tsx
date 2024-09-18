@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { ThemeProvider } from "next-themes";
+import { Noto_Kufi_Arabic } from "next/font/google";
+
 import "./globals.css";
 
-const inter = Inter({ subsets: ["latin"] });
+const Notokufiarabic = Noto_Kufi_Arabic({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -16,7 +18,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={Notokufiarabic.className}>
+        <ThemeProvider enableSystem={true} attribute="class">
+          {children}
+        </ThemeProvider>
+      </body>
     </html>
   );
 }
